@@ -1,13 +1,14 @@
 <script>
-	import { goto } from '$app/navigation';
+	import { goto, invalidate } from '$app/navigation';
 
 	async function submit() {
-		await fetch('/api/logout', { method: 'POST' });
-		goto('/login');
+		await fetch('/api/logout');
+		await invalidate();
+		goto('/login', { replaceState: true });
 	}
 </script>
 
 <div class="flex-row items-center p-00 border-b-gray-500">
 	<slot />
-	<button href="/logout" class="text-00 text-gray-100 underline" on:click={submit}>Logout</button>
+	<button data-type="link" class="text-00 text-gray-100 underline" on:click={submit}>Logout</button>
 </div>

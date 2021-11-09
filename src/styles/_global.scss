@@ -1,0 +1,27 @@
+button {
+	padding: var(--size-000) var(--size-00);
+	border-radius: var(--size-00);
+	background-color: var(--color-bace);
+}
+
+button[data-type='secondary'] {
+	background-color: var(--color-gray-300);
+}
+
+button[data-type='link'] {
+	background-color: transparent;
+}
+
+// Ordered list
+ol:not([role]) {
+	list-style: decimal outside;
+	padding-left: var(--size-2);
+
+	> li::marker {
+		font-style: italic;
+		font-weight: bold;
+		color: var(--color-bace);
+		font-size: var(--size-1);
+		font-family: var(--serif);
+	}
+}

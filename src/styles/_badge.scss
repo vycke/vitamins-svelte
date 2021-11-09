@@ -1,0 +1,14 @@
+.badge[data-type='bug'] {
+	background-color: var(--color-u-error);
+	color: var(--color-error);
+}
+
+.badge[data-type='idea'] {
+	background-color: var(--color-u-info);
+	color: var(--color-info);
+}
+
+.badge[data-type='other'] {
+	background-color: var(--color-gray-300);
+	color: var(--color-gray-500);
+}

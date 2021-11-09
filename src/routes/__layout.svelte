@@ -1,13 +1,12 @@
 <script context="module">
 	export async function load({ session, page }) {
-		if (page.path === '/login') return { status: 200 };
-		if (!session?.user.id)
+		if (!session.user?.id && page.path !== '/login')
 			return {
 				status: 301,
 				redirect: '/login'
 			};
 
-		return { status: 200, stuff: { user: session.user } };
+		return { stuff: { user: session.user } };
 	}
 </script>
 

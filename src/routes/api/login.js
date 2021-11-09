@@ -1,7 +1,7 @@
 import { user } from '$lib/mocks';
 
-export async function post(request) {
+export function get(request) {
 	// TODO handle callback of actual fetch from login Supabase
-	request.locals.user = JSON.stringify(user);
+	request.locals.user = user;
 	return {};
 }

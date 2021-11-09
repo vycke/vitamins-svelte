@@ -1,4 +1,4 @@
-export async function post(request) {
-	request.locals.user = null;
+export function get(request) {
+	request.locals.user = undefined;
 	return {};
 }

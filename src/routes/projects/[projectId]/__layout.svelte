@@ -33,7 +33,7 @@
 </script>
 
 <div class="flex-row">
-	<div class="flex-col p-00">
+	<div class="flex-col p-00 sticky self-start post-0">
 		<Logo class="mb-1" />
 		<Navigation items={navItems} />
 	</div>

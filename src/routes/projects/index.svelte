@@ -1,5 +1,5 @@
 <script context="module">
-	export async function load({ page, fetch }) {
+	export async function load({ fetch }) {
 		const res = await fetch(`/api/projects.json`);
 		if (res.ok) {
 			const projects = await res.json();

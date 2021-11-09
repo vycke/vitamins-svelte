@@ -1,6 +1,6 @@
 <script context="module">
-	export const prerender = true;
 	export async function load({ error, status }) {
+		console.log(error);
 		return { props: { status, error } };
 	}
 </script>

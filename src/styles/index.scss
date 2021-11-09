@@ -1,5 +1,7 @@
 @import 'feo-config';
 @import '../../node_modules/@crinkles/feo/feo.scss';
+@import 'global';
+@import 'badge';
 
 // utilities
 .scale {
@@ -12,4 +14,10 @@
 
 .mh-full {
 	min-height: 100vh;
+}
+
+.ellipsis {
+	overflow-x: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }

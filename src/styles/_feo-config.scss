@@ -14,5 +14,10 @@ $feo-colors: (
 	//based on 1-BACE, analogue system +/- 20 hue, same saturation, same lightness
 	'o-bace': #117aaa,
 	'bace': #11bace,
-	'u-bace': #11ecab
+	'u-bace': #11ecab,
+	// system colors
+	'error': #ff0000,
+	'u-error': #ffcccc,
+	'info': #0000ff,
+	'u-info': #bbbbff
 );

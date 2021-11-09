@@ -1,9 +1,16 @@
+<script context="module">
+	export async function load({ session }) {
+		if (session.user) return { status: 302, redirect: '/projects' };
+		return {};
+	}
+</script>
+
 <script>
 	import { goto } from '$app/navigation';
 
 	async function submit() {
-		await fetch('/api/login', { method: 'POST' });
-		goto('/');
+		await fetch('/api/login');
+		goto('/projects');
 	}
 </script>
 

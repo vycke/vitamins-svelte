@@ -21,7 +21,8 @@
     "svelte": "^3.42.6"
   },
   "dependencies": {
-    "@crinkles/feo": "^2.2.3",
+    "@crinkles/feo": "^2.2.4",
+    "@sveltejs/pancake": "^0.0.18",
     "cookie": "^0.4.1"
   }
 }
