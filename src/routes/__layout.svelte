@@ -1,10 +1,10 @@
 <script context="module">
 	export async function load({ session, page }) {
-		if (!session.user?.id && page.path !== '/login')
-			return {
-				status: 301,
-				redirect: '/login'
-			};
+		// if (!session.user?.id && page.path !== '/login')
+		// 	return {
+		// 		status: 301,
+		// 		redirect: '/login'
+		// 	};
 
 		return { stuff: { user: session.user } };
 	}
@@ -15,6 +15,7 @@
 </script>
 
 <svelte:head>
+	<meta name="color-scheme" content="dark" />
 	<title>Vitamins</title>
 </svelte:head>
 

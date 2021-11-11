@@ -15,15 +15,15 @@
 	<div class="tiles tiles-w-00 tiles-g-0 w-full my-1">
 		<div class="flex-col">
 			<span class="text-gray-300 text-00 bold uppercase">Version</span>
-			<span>{item.version}</span>
+			<span class="break-word">{item.version}</span>
 		</div>
 		<div class="flex-col">
 			<span class="text-gray-300 text-00 bold uppercase">Location</span>
-			<span>{item.location}</span>
+			<span class="break-word">{item.location}</span>
 		</div>
 		<div class="flex-col">
 			<span class="text-gray-300 text-00 bold uppercase">Agent</span>
-			<span>{item.agent}</span>
+			<span class="break-word">{item.agent}</span>
 		</div>
 	</div>
 

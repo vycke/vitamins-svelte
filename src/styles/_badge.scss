@@ -1,4 +1,5 @@
-.badge[data-type='bug'] {
+.badge[data-type='bug'],
+.badge[data-status='open'] {
 	background-color: var(--color-u-error);
 	color: var(--color-error);
 }
@@ -8,7 +9,8 @@
 	color: var(--color-info);
 }
 
-.badge[data-type='other'] {
+.badge[data-type='other'],
+.badge[data-status='closed'] {
 	background-color: var(--color-gray-300);
 	color: var(--color-gray-500);
 }

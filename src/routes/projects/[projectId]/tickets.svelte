@@ -16,7 +16,7 @@
 <script>
 	import ListItem from '$lib/components/layout/ListItem.svelte';
 	import CollapsedItem from '$lib/components/tickets/CollapsedItem.svelte';
-	import FullItem from '$lib/components/tickets/FullItem.svelte';
+	import ExpandedItem from '$lib/components/tickets/ExpandedItem.svelte';
 
 	export let tickets = [];
 	let selected;
@@ -49,7 +49,7 @@
 		{#each showItems as item}
 			<ListItem on:click={() => (selected = item.id)} selected={item.id === selected}>
 				<CollapsedItem slot="not-selected" {item} />
-				<FullItem slot="selected" {item} />
+				<ExpandedItem slot="selected" {item} />
 			</ListItem>
 		{/each}
 	</div>

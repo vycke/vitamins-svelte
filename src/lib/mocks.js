@@ -37,7 +37,13 @@ export function sessions() {
 }
 
 // PAGE VISITS
-const pages = ['/tickets', '/sessions', '/errors', '/', '/settings'];
+const pages = [
+	'/tickets',
+	'/sessions/23412341234123412341234123412341234123421341234123412341234234',
+	'/errors',
+	'/',
+	'/settings'
+];
 export function visits(sessions) {
 	const visits = [];
 
@@ -55,6 +61,36 @@ export function visits(sessions) {
 }
 
 // ERRORS & EVENTS
+export function errors() {
+	const items = [];
+
+	for (let i = 0; i < 100; i++) {
+		const days = Math.round(Math.random() * 60);
+		const date = new Date();
+		date.setDate(date.getDate() - days);
+		const path = Math.round(Math.random() * (pages.length - 1));
+		items.push({
+			id: i,
+			status: 'open',
+
+			error: {
+				message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+				name: 'TypeError',
+				stack:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit.\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\nLorem ipsum dolor sit amet, consectetur adipiscing elit.'
+			},
+			metadata: {
+				agent: 'Chrome 85, MacOS 10.14',
+				location: pages[path],
+				version: '1.0.0'
+			},
+
+			timestamp: date.toISOString()
+		});
+	}
+
+	return items;
+}
 
 // FEEDBACK ITEMS
 const types = ['idea', 'bug', 'other'];
@@ -69,7 +105,6 @@ export function tickets() {
 		const path = Math.round(Math.random() * (pages.length - 1));
 		items.push({
 			id: i,
-
 			open: true,
 			type: types[type],
 			location: pages[path],

@@ -36,7 +36,7 @@
 		{#each topVisitedPages as page}
 			<li>
 				<div class="flex-row items-center px-0">
-					<span class="flex-grow">{page.path}</span>
+					<span class="flex-grow break-word">{page.path}</span>
 					<span class="bold">{page.count}</span>
 				</div>
 			</li>
