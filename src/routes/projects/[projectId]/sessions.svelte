@@ -1,22 +1,15 @@
 <script context="module">
-	export async function load({ fetch }) {
-		const res = await fetch(`/api/sessions.json`);
-		if (res.ok) {
-			const { sessionsPerDay, topVisitedPages } = await res.json();
-			return { props: { sessionsPerDay, topVisitedPages } };
-		}
+	import { loadHelper } from '$lib/helpers/load';
 
-		return {
-			status: res.status,
-			error: new Error('Something went wrong')
-		};
+	export async function load({ fetch }) {
+		return loadHelper(fetch, `/api/sessions.json`, ['sessionsPerDay', 'topVisitedPages']);
 	}
 </script>
 
 <script>
 	import BarChart from '$lib/components/BarChart.svelte';
 	import Card from '$lib/components/layout/Card.svelte';
-	import { sum } from '$lib/helpers';
+	import { sum } from '$lib/helpers/numbers';
 	export let topVisitedPages, sessionsPerDay;
 
 	$: totalPages = sum(topVisitedPages, 'count');
@@ -27,7 +20,7 @@
 	<Card class="center-exception maxw-4 mb-2" hover={false}>
 		<h2 class="uppercase text-0 text-gray-300">Sessions last 30 days</h2>
 		<span class="bold uppercase mb-0 text-1">Total: {totalSessions}</span>
-		<BarChart data={sessionsPerDay || []} class="center-exception maxw-4" />
+		<BarChart data={sessionsPerDay || []} />
 	</Card>
 
 	<h2 class="text-1 uppercase">Top 20 visited pages of the last 30 days</h2>

@@ -8,7 +8,7 @@
 	}
 </script>
 
-<div class="flex-row items-center p-00 border-b-gray-500">
+<header class="flex-row items-center p-00 border-b-gray-500">
 	<slot />
 	<button data-type="link" class="text-00 text-gray-100 underline" on:click={submit}>Logout</button>
-</div>
+</header>

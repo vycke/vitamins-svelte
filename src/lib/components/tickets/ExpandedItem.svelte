@@ -28,7 +28,14 @@
 	</div>
 
 	<div class="flex-row justify-end items-center w-full">
-		<button>Email</button>
+		{#if item.email}
+			<a
+				data-type="button"
+				href={`mailto:${item.email}?subject=Regarding your feedback (#${item.id})&body=Hi,`}
+			>
+				Email
+			</a>
+		{/if}
 		<button data-type="secondary" class="ml-0">Archive</button>
 	</div>
 </div>

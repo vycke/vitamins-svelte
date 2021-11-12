@@ -1,15 +1,7 @@
 <script context="module">
+	import { loadHelper } from '$lib/helpers/load';
 	export async function load({ fetch }) {
-		const res = await fetch(`/api/tickets.json`);
-		if (res.ok) {
-			const tickets = await res.json();
-			return { props: { tickets } };
-		}
-
-		return {
-			status: res.status,
-			error: new Error('Something went wrong')
-		};
+		return loadHelper(fetch, `/api/tickets.json`, 'tickets');
 	}
 </script>
 
@@ -24,7 +16,7 @@
 	$: showItems = tickets.slice(0, show);
 </script>
 
-<div class="flex-row">
+<div class="flex-row justify-center">
 	<div role="list" class="maxw-00 p-0 pt-3 mt-3">
 		<span class="text-gray-300 bold text-00 uppercase">Filters</span>
 		<div class="flex-row items-center w-full mt-0">

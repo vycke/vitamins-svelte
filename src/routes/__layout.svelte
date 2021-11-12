@@ -19,4 +19,4 @@
 	<title>Vitamins</title>
 </svelte:head>
 
-<main class="bg-gray-600 text-gray-100 flex-col mh-full"><slot /></main>
+<div class="bg-gray-600 text-gray-100 flex-col mh-full"><slot /></div>

@@ -1,5 +1,5 @@
 <script>
-	import { getMax } from '$lib/helpers';
+	import { getMax } from '$lib/helpers/numbers';
 	import * as Pancake from '@sveltejs/pancake';
 
 	export let data = [];
@@ -22,7 +22,7 @@
 
 		{#each data as d}
 			<Pancake.Box y1={0} y2={d.count} x1={d.day - 0.5} x2={d.day + 0.5}>
-				<div class="box" />
+				<div class="box" data-tooltip={`${d.count}`} />
 			</Pancake.Box>
 		{/each}
 	</Pancake.Chart>

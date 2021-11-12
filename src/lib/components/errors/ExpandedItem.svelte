@@ -36,6 +36,6 @@
 
 	<div class="flex-row justify-end items-center w-full">
 		<button>Create ticket</button>
-		<button data-type="secondary" class="ml-0">Close</button>
+		<button data-type="secondary" class="ml-0">Archive</button>
 	</div>
 </div>

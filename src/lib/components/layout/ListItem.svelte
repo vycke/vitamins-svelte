@@ -3,10 +3,10 @@
 </script>
 
 <div
-	class:border-gray-400={selected}
+	class:border-gray-500={selected}
 	class:bg-gray-500={selected}
 	class:pointer={!selected}
-	class="list-item | radius-00 p-0 transition-200"
+	class="list-item | radius-00 p-0 transition-200 border-gray-600 hover:border-gray-400"
 	on:click
 >
 	{#if selected}

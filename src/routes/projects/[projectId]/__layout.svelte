@@ -16,7 +16,7 @@
 <script>
 	import { routes } from '$lib/constants';
 	import { page } from '$app/stores';
-	import Navigation from '$lib/components/navigation/Navigation.svelte';
+	import Navigation from '$lib/components/layout/Navigation.svelte';
 	import BreadCrumb from '$lib/components/BreadCrumb.svelte';
 	import Header from '$lib/components/layout/Header.svelte';
 	import Logo from '$lib/components/layout/Logo.svelte';
@@ -33,16 +33,16 @@
 </script>
 
 <div class="flex-row">
-	<div class="flex-col p-00 sticky self-start post-0">
+	<nav class="flex-col p-00 sticky self-start post-0">
 		<Logo class="mb-1" />
 		<Navigation items={navItems} />
-	</div>
+	</nav>
 	<div class="flex-col flex-grow mh-full border-l-gray-500">
 		<Header>
 			<BreadCrumb items={breadItems} class="flex-grow" />
 		</Header>
 
-		<main class="flex-grow p-00"><slot {project} /></main>
+		<main class="flex-grow flex-col p-00"><slot {project} /></main>
 		<Footer />
 	</div>
 </div>
