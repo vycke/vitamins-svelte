@@ -1,8 +1,10 @@
 @import 'feo-config';
 @import '../../node_modules/@crinkles/feo/feo.scss';
 @import 'global';
-@import 'badge';
-@import 'tooltip';
+
+@import 'blocks/badge';
+@import 'blocks/tooltip';
+@import 'blocks/icons';
 
 // utilities
 .scale {

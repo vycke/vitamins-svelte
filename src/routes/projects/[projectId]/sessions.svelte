@@ -8,7 +8,7 @@
 
 <script>
 	import BarChart from '$lib/components/BarChart.svelte';
-	import Card from '$lib/components/layout/Card.svelte';
+	import Card from '$lib/components/layout/cards/Card.svelte';
 	import { sum } from '$lib/helpers/numbers';
 	export let topVisitedPages, sessionsPerDay;
 
@@ -17,9 +17,12 @@
 </script>
 
 <div class="center center-w-3 center-g-0 | flow flow-g-00 | mt-0">
-	<Card class="center-exception maxw-4 mb-2" hover={false}>
-		<h2 class="uppercase text-0 text-gray-300">Sessions last 30 days</h2>
-		<span class="bold uppercase mb-0 text-1">Total: {totalSessions}</span>
+	<Card
+		class="center-exception maxw-4 mb-2"
+		hover={false}
+		title="Sessions last 30 days"
+		subtitle={totalSessions}
+	>
 		<BarChart data={sessionsPerDay || []} />
 	</Card>
 

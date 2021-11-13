@@ -1,18 +1,17 @@
 <script context="module">
 	import { loadHelper } from '$lib/helpers/load';
 	export async function load({ fetch }) {
-		return loadHelper(fetch, `/api/errors.json`, ['errors', 'errorsPerDay']);
+		return await loadHelper(fetch, `/api/errors.json`, ['errors', 'errorsPerDay']);
 	}
 </script>
 
 <script>
 	import BarChart from '$lib/components/BarChart.svelte';
-	import Card from '$lib/components/layout/Card.svelte';
+	import Card from '$lib/components/layout/cards/Card.svelte';
 	import ListItem from '$lib/components/layout/ListItem.svelte';
 	import CollapsedItem from '$lib/components/errors/CollapsedItem.svelte';
 	import ExpandedItem from '$lib/components/errors/ExpandedItem.svelte';
 	import { sum } from '$lib/helpers/numbers';
-
 	export let errors, errorsPerDay;
 	let selected;
 	let show = 5;
@@ -22,9 +21,7 @@
 </script>
 
 <div class="flow flow-g-00 items-center | mt-0 px-0">
-	<Card class="maxw-4 mb-2" clickable={false}>
-		<h2 class="uppercase text-0 text-gray-300">Errors last 30 days</h2>
-		<span class="bold uppercase mb-0 text-1">Total: {totalErrors}</span>
+	<Card class="maxw-4 mb-2" clickable={false} title="Errors last 30 days" subtitle={totalErrors}>
 		<BarChart data={errorsPerDay || []} />
 	</Card>
 

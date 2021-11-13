@@ -1,4 +1,6 @@
 <script>
+	import { set } from '$lib/stores/toast';
+
 	export let item;
 </script>
 
@@ -32,10 +34,13 @@
 			<a
 				data-type="button"
 				href={`mailto:${item.email}?subject=Regarding your feedback (#${item.id})&body=Hi,`}
+				on:click|stopPropagation
 			>
 				Email
 			</a>
 		{/if}
-		<button data-type="secondary" class="ml-0">Archive</button>
+		<button data-type="secondary" class="ml-0" on:click|stopPropagation={() => set('Archived')}
+			>Archive</button
+		>
 	</div>
 </div>

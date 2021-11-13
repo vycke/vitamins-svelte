@@ -16,8 +16,8 @@
 <script>
 	import { routes } from '$lib/constants';
 	import { page } from '$app/stores';
-	import Navigation from '$lib/components/layout/Navigation.svelte';
-	import BreadCrumb from '$lib/components/BreadCrumb.svelte';
+	import Navigation from '$lib/components/layout/navigation/Navigation.svelte';
+	import BreadCrumb from '$lib/components/layout/BreadCrumb.svelte';
 	import Header from '$lib/components/layout/Header.svelte';
 	import Logo from '$lib/components/layout/Logo.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';

@@ -14,9 +14,9 @@
 </script>
 
 <script>
-	import BreadCrumb from '$lib/components/BreadCrumb.svelte';
+	import BreadCrumb from '$lib/components/layout/BreadCrumb.svelte';
 
-	import Card from '$lib/components/layout/Card.svelte';
+	import Card from '$lib/components/layout/cards/Card.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
 	import Header from '$lib/components/layout/Header.svelte';
 	import Logo from '$lib/components/layout/Logo.svelte';

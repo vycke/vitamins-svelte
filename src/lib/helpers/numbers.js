@@ -1,4 +1,4 @@
-export function getMax(arr, key) {
+export function max(arr, key) {
 	let max = 0;
 	arr.forEach((a) => {
 		if (a[key] > max) max = a[key];

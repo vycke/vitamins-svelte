@@ -1,5 +1,10 @@
 <script>
+	import { createEventDispatcher } from 'svelte';
 	export let selected = false;
+	const dispatch = createEventDispatcher();
+	function onclick() {
+		dispatch('click', !selected);
+	}
 </script>
 
 <div
@@ -7,7 +12,7 @@
 	class:bg-gray-500={selected}
 	class:pointer={!selected}
 	class="list-item | radius-00 p-0 transition-200 border-gray-600 hover:border-gray-400"
-	on:click
+	on:click={onclick}
 >
 	{#if selected}
 		<slot name="selected" />

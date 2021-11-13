@@ -1,36 +1,45 @@
 <script>
-	import { getMax } from '$lib/helpers/numbers';
+	import { max } from '$lib/helpers/numbers';
 	import * as Pancake from '@sveltejs/pancake';
 
 	export let data = [];
+	export let size = 'medium';
 	let className = '';
 	export { className as class };
-	const max = getMax(data, 'count');
+	const _max = max(data, 'count');
 </script>
 
-<div class={`chart ${className}`}>
-	<Pancake.Chart y1={0} y2={max} x1={data[data.length - 1].day + 0.5} x2={data[0].day - 0.5}>
-		<Pancake.Grid horizontal count={5} let:value>
-			<div class="grid-line horizontal" />
-			<span class="label y-label">{value}</span>
-		</Pancake.Grid>
+<div class={`chart ${className}`} data-size={size}>
+	{#if data.length > 0}
+		<Pancake.Chart y1={0} y2={_max} x1={data[data.length - 1].day + 0.5} x2={data[0].day - 0.5}>
+			<Pancake.Grid horizontal count={5} let:value>
+				<div class="grid-line horizontal" />
+				<span class="label y-label">{value}</span>
+			</Pancake.Grid>
 
-		<Pancake.Grid vertical count={10} let:value>
-			<div class="grid-line vertical" />
-			<span class="label x-label">{data.find((d) => d.day === value).date}</span>
-		</Pancake.Grid>
+			<Pancake.Grid vertical count={10} let:value>
+				<div class="grid-line vertical" />
+				<span class="label x-label">{data.find((d) => d.day === value).date}</span>
+			</Pancake.Grid>
 
-		{#each data as d}
-			<Pancake.Box y1={0} y2={d.count} x1={d.day - 0.5} x2={d.day + 0.5}>
-				<div class="box" data-tooltip={`${d.count}`} />
-			</Pancake.Box>
-		{/each}
-	</Pancake.Chart>
+			{#each data as d}
+				<Pancake.Box y1={0} y2={d.count} x1={d.day - 0.5} x2={d.day + 0.5}>
+					<div class="box transition-200 bg-bace hover:bg-u-bace" data-tooltip={`${d.count}`} />
+				</Pancake.Box>
+			{/each}
+		</Pancake.Chart>
+	{/if}
 </div>
 
 <style>
-	.chart {
-		height: 20rem;
+	.chart[data-size='medium'] {
+		height: 18rem;
+		padding: 2rem;
+		padding-bottom: 80px;
+	}
+
+	.chart[data-size='small'] {
+		height: 9rem;
 		padding: 2rem;
 		padding-bottom: 80px;
 	}
@@ -77,7 +86,7 @@
 		left: 2px;
 		width: calc(100% - 4px);
 		height: 100%;
-		border-radius: 2px;
-		background-color: var(--color-bace);
+		border-top-left-radius: var(--size-000);
+		border-top-right-radius: var(--size-000);
 	}
 </style>

@@ -11,6 +11,7 @@
 </script>
 
 <script>
+	import Toast from '$lib/components/layout/Toast.svelte';
 	import '../styles/index.scss';
 </script>
 
@@ -19,4 +20,7 @@
 	<title>Vitamins</title>
 </svelte:head>
 
-<div class="bg-gray-600 text-gray-100 flex-col mh-full"><slot /></div>
+<div class="bg-gray-600 text-gray-100 flex-col mh-full">
+	<slot />
+</div>
+<Toast />

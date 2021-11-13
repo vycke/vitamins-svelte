@@ -1,4 +1,6 @@
 <script>
+	import { set } from '$lib/stores/toast';
+
 	export let item;
 	$: stack = item.error.stack.split('\r\n');
 </script>
@@ -35,7 +37,9 @@
 	</pre>
 
 	<div class="flex-row justify-end items-center w-full">
-		<button>Create ticket</button>
-		<button data-type="secondary" class="ml-0">Archive</button>
+		<button on:click|stopPropagation={() => set('Ticket created')}>Create ticket</button>
+		<button data-type="secondary" class="ml-0" on:click|stopPropagation={() => set('Archived')}>
+			Archive
+		</button>
 	</div>
 </div>

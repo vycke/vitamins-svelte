@@ -17,7 +17,7 @@
 </script>
 
 <div class="flex-row justify-center">
-	<div role="list" class="maxw-00 p-0 pt-3 mt-3">
+	<div role="list" class="maxw-00 p-0">
 		<span class="text-gray-300 bold text-00 uppercase">Filters</span>
 		<div class="flex-row items-center w-full mt-0">
 			<span class="flex-grow">All</span>
@@ -37,9 +37,12 @@
 		</div>
 	</div>
 	<div class="px-0 maxw-3 | flow flow-g-00 | mt-0">
-		<h2 class="text-1 uppercase mb-0 ml-0">Recent tickets</h2>
+		<!-- <h2 class="text-1 uppercase mb-0 ml-0">Recent tickets</h2> -->
 		{#each showItems as item}
-			<ListItem on:click={() => (selected = item.id)} selected={item.id === selected}>
+			<ListItem
+				on:click={(event) => (event.detail ? (selected = item.id) : (selected = null))}
+				selected={item.id === selected}
+			>
 				<CollapsedItem slot="not-selected" {item} />
 				<ExpandedItem slot="selected" {item} />
 			</ListItem>
