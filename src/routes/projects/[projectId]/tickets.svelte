@@ -9,6 +9,8 @@
 	import ListItem from '$lib/components/layout/ListItem.svelte';
 	import CollapsedItem from '$lib/components/tickets/CollapsedItem.svelte';
 	import ExpandedItem from '$lib/components/tickets/ExpandedItem.svelte';
+	import { trigger } from '$lib/stores/modal';
+	import Modal from '$lib/components/layout/modal/Modal.svelte';
 
 	export let tickets = [];
 	let selected;
@@ -35,6 +37,8 @@
 			<span class="flex-grow">Other</span>
 			<span>0</span>
 		</div>
+
+		<button on:click={trigger} class="mt-2 w-full">Create ticket</button>
 	</div>
 	<div class="px-0 maxw-3 | flow flow-g-00 | mt-0">
 		<!-- <h2 class="text-1 uppercase mb-0 ml-0">Recent tickets</h2> -->
@@ -49,3 +53,5 @@
 		{/each}
 	</div>
 </div>
+
+<Modal title="Add ticket" />

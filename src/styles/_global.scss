@@ -30,6 +30,11 @@ button[data-type='link']:hover {
 	text-decoration: underline;
 }
 
+button[data-type='styleless'] {
+	padding: 0;
+	background-color: transparent;
+}
+
 // Ordered list
 ol:not([role]) {
 	list-style: decimal outside;

@@ -1,5 +1,5 @@
-import { writable } from 'svelte/store';
-import { fsm, send } from '@crinkles/fsm';
+import { fsm, send, assign } from '@crinkles/fsm';
+import { fsmStore } from './util';
 
 const states = {
 	visible: {
@@ -7,7 +7,12 @@ const states = {
 			REMOVED: 'notvisible',
 			CREATED: 'visible'
 		},
-		entry: send('REMOVED', 6000)
+		entry: [
+			assign((_c, values) => {
+				return values;
+			}),
+			send('REMOVED', 6000)
+		]
 	},
 	notvisible: {
 		on: {
@@ -17,16 +22,10 @@ const states = {
 };
 
 const machine = fsm('notvisible', states);
-
-export const toast = writable({ state: 'notvisible', label: '' });
-
-machine.listen((_s, target) => {
-	toast.update(() => ({ label: '', state: target }));
-});
+export const toast = fsmStore(machine);
 
 export function set(label) {
-	machine.send('CREATED');
-	toast.update(() => ({ label, state: machine.current }));
+	machine.send('CREATED', 0, { label });
 }
 
 export function unset() {

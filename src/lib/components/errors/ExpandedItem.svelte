@@ -1,4 +1,6 @@
 <script>
+	import { format } from '$lib/helpers/datetime';
+
 	import { set } from '$lib/stores/toast';
 
 	export let item;
@@ -12,7 +14,7 @@
 		</span>
 		<span class="flex-grow mx-0 monospace">{item.error.name}</span>
 		<span class="text-00 bold text-gray-300 ml-0 text-right">
-			{item.timestamp.slice(0, 10)}
+			{format(item.timestamp)}
 		</span>
 	</div>
 

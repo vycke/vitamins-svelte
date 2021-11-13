@@ -20,6 +20,8 @@
 	import Footer from '$lib/components/layout/Footer.svelte';
 	import Header from '$lib/components/layout/Header.svelte';
 	import Logo from '$lib/components/layout/Logo.svelte';
+	import Modal from '$lib/components/layout/modal/Modal.svelte';
+	import { trigger } from '$lib/stores/modal';
 
 	export let projects;
 
@@ -34,7 +36,10 @@
 		<Logo class="mr-0" />
 		<BreadCrumb items={crumbs} class="flex-grow" />
 	</Header>
-	<h1 class="m-1">Projects</h1>
+	<div class="m-1 flex-row items-center">
+		<h1 class="flex-grow">Projects</h1>
+		<button on:click={trigger}>Create project</button>
+	</div>
 </div>
 <div class="cluster cluster-g-0 cluster-w-0 p-2 flex-grow items-start">
 	{#each projects as project}
@@ -46,3 +51,5 @@
 	{/each}
 </div>
 <Footer />
+
+<Modal title="Add project" />

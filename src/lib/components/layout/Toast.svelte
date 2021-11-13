@@ -1,12 +1,10 @@
 <script>
 	import { toast, unset } from '$lib/stores/toast';
+	const { state, context } = toast;
 </script>
 
-<div
-	class="toast | bold py-000 px-0 lh-00 bg-bace text-gray-100 radius-00"
-	data-state={$toast.state}
->
-	<span>{$toast.label}</span>
+<div class="toast | bold py-000 px-0 lh-00 bg-bace text-gray-100 radius-00" data-state={$state}>
+	<span>{$context?.label}</span>
 	<button on:click={unset} class="ml-1" data-type="link">x</button>
 </div>
 

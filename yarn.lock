@@ -28,10 +28,10 @@
   resolved "https://registry.yarnpkg.com/@crinkles/feo/-/feo-2.2.4.tgz#27382cd1c05cfa482f93da3b3fe894dfa4286f16"
   integrity sha512-woeGKYVrNXyIokTwSuWcEOubYHRRnF68c5JQA3HQphMMnkkY7VmxuxF6aMMZZD9CRE3bbSpXasw7FzND9OScRQ==
 
-"@crinkles/fsm@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@crinkles/fsm/-/fsm-0.6.0.tgz#52c711f0e7a575343b547906e0a7dc5eed03b7b7"
-  integrity sha512-wxYzN4EylTeJjqtj6VfI5AeWvb19zyWQFP1g/T0K80FEyTubrWtN7WpC5wovxXH88z9d+Zm7fSRsN9ENFwLc4Q==
+"@crinkles/fsm@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@crinkles/fsm/-/fsm-0.6.1.tgz#b4d64981aabe6f7905b555e0b152a25e08320332"
+  integrity sha512-jPrnbpDNtxy/161nqej/kOG0f53JrlnObDleW2LalQfxsYhMP+sy9Zr4LKI3w0Rgz+rwZOWaXuC7p1sc3Ckeyw==
 
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"
@@ -1068,19 +1068,12 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
-svelte-feather-icons@^3.5.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/svelte-feather-icons/-/svelte-feather-icons-3.5.0.tgz#4da21698feb9ed776f5dd5f8558985be9b5288ac"
-  integrity sha512-AO6vwbI+WH8xouZRIxyenUV2olSAjp0QFgBa4esyS9ZxvBmKkRu9VTfgbMW0F1N7QTOWbMpgaForsnOcFGfXeg==
-  dependencies:
-    svelte "^3.38.2"
-
 svelte-hmr@^0.14.7:
   version "0.14.7"
   resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.14.7.tgz#7fa8261c7b225d9409f0a86f3b9ea5c3ca6f6607"
   integrity sha512-pDrzgcWSoMaK6AJkBWkmgIsecW0GChxYZSZieIYfCP0v2oPyx2CYU/zm7TBIcjLVUPP714WxmViE9Thht4etog==
 
-svelte@^3.38.2, svelte@^3.42.6:
+svelte@^3.42.6:
   version "3.44.1"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.44.1.tgz#5cc772a8340f4519a4ecd1ac1a842325466b1a63"
   integrity sha512-4DrCEJoBvdR689efHNSxIQn2pnFwB7E7j2yLEJtHE/P8hxwZWIphCtJ8are7bjl/iVMlcEf5uh5pJ68IwR09vQ==

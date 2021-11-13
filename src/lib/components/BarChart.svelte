@@ -1,4 +1,5 @@
 <script>
+	import { format } from '$lib/helpers/datetime';
 	import { max } from '$lib/helpers/numbers';
 	import * as Pancake from '@sveltejs/pancake';
 
@@ -19,7 +20,7 @@
 
 			<Pancake.Grid vertical count={10} let:value>
 				<div class="grid-line vertical" />
-				<span class="label x-label">{data.find((d) => d.day === value).date}</span>
+				<span class="label x-label">{format(data.find((d) => d.day === value).date)}</span>
 			</Pancake.Grid>
 
 			{#each data as d}
@@ -41,7 +42,7 @@
 	.chart[data-size='small'] {
 		height: 9rem;
 		padding: 2rem;
-		padding-bottom: 80px;
+		padding-bottom: 75px;
 	}
 
 	.grid-line {
