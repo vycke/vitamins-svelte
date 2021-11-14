@@ -75,7 +75,7 @@ export function errors() {
 		date.setDate(date.getDate() - days);
 		const path = Math.round(Math.random() * (pages.length - 1));
 		items.push({
-			id: i,
+			id: `${i}`,
 			status: 'open',
 
 			error: {
@@ -109,7 +109,7 @@ export function tickets() {
 		const type = Math.round(Math.random() * (types.length - 1));
 		const path = Math.round(Math.random() * (pages.length - 1));
 		items.push({
-			id: i,
+			id: `${i}`,
 			open: true,
 			type: types[type],
 			location: pages[path],

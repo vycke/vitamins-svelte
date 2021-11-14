@@ -1,6 +1,5 @@
 <script>
 	import { toast } from '$lib/stores/toast';
-	const { state, context } = toast;
 </script>
 
 <div

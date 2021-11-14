@@ -10,7 +10,6 @@
 	export let project = {};
 
 	function onSubmit() {
-		console.log(project);
 		toast.dispatch('CREATED', { label: 'Updated' });
 	}
 </script>
