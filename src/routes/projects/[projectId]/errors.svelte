@@ -21,7 +21,7 @@
 </script>
 
 <div class="flow flow-g-00 items-center | mt-0 px-0">
-	<Card class="maxw-4 mb-2" clickable={false} title="Errors last 30 days" subtitle={totalErrors}>
+	<Card class="maxw-4 mb-2" title="Errors last 30 days" subtitle={totalErrors}>
 		<BarChart data={errorsPerDay || []} />
 	</Card>
 

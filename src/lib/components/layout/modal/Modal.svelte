@@ -1,19 +1,18 @@
 <script>
 	import CloseIcon from '$lib/components/icons/CloseIcon.svelte';
-	import { modal, trigger } from '$lib/stores/modal';
-	const { state } = modal;
+	import { modal } from '$lib/stores/modal';
 
 	export let title = '';
 </script>
 
-{#if $state === 'visible'}
-	<div class="dimmer" />
+{#if $modal.state === 'visible'}
+	<div class="dimmer" on:click|stopPropagation={() => modal.dispatch('TOGGLE')} />
 {/if}
 
-<div class="modal | p-0 bg-gray-500 border-gray-400 radius-00" data-state={$state}>
+<div class="modal | p-0 bg-gray-500 border-gray-400 radius-00" data-state={$modal.state}>
 	<div class="flex-row items-center bold">
 		<span class="flex-grow">{title}</span>
-		<button on:click={trigger} data-type="styleless">
+		<button on:click={() => modal.dispatch('TOGGLE')} data-type="styleless">
 			<CloseIcon class="text-gray-100 icon-1" />
 		</button>
 	</div>

@@ -7,6 +7,7 @@ a[data-type='button'] {
 	font-size: var(--size-0);
 	text-decoration: none;
 	line-height: var(--lh-00);
+	white-space: nowrap;
 }
 
 button:hover,
@@ -30,6 +31,14 @@ button[data-type='link']:hover {
 	text-decoration: underline;
 }
 
+button[data-type='error'] {
+	background-color: var(--color-error);
+}
+
+button[data-type='error']:hover {
+	background-color: var(--color-u-error);
+}
+
 button[data-type='styleless'] {
 	padding: 0;
 	background-color: transparent;
@@ -47,4 +56,18 @@ ol:not([role]) {
 		font-size: var(--size-1);
 		font-family: var(--serif);
 	}
+}
+
+input {
+	padding: var(--size-00) var(--size-00);
+	border-radius: var(--size-00);
+	font-size: var(--size-0);
+	background-color: var(--color-gray-400);
+	border: 1px solid var(--color-gray-300);
+}
+
+label {
+	color: var(--color-gray-300);
+	font-size: var(--size-00);
+	text-transform: uppercase;
 }

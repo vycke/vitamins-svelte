@@ -1,7 +1,6 @@
 <script>
 	import { format } from '$lib/helpers/datetime';
-
-	import { set } from '$lib/stores/toast';
+	import { toast } from '$lib/stores/toast';
 
 	export let item;
 	$: stack = item.error.stack.split('\r\n');
@@ -39,8 +38,14 @@
 	</pre>
 
 	<div class="flex-row justify-end items-center w-full">
-		<button on:click|stopPropagation={() => set('Ticket created')}>Create ticket</button>
-		<button data-type="secondary" class="ml-0" on:click|stopPropagation={() => set('Archived')}>
+		<button on:click|stopPropagation={() => toast.dispatch('CREATED', { label: 'Ticket created' })}
+			>Create ticket</button
+		>
+		<button
+			data-type="secondary"
+			class="ml-0"
+			on:click|stopPropagation={() => toast.dispatch('CREATED', { label: 'Archived' })}
+		>
 			Archive
 		</button>
 	</div>

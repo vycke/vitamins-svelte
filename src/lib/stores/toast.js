@@ -1,4 +1,4 @@
-import { fsm, send, assign } from '@crinkles/fsm';
+import { send, assign } from '@crinkles/fsm';
 import { fsmStore } from './util';
 
 const states = {
@@ -21,13 +21,4 @@ const states = {
 	}
 };
 
-const machine = fsm('notvisible', states);
-export const toast = fsmStore(machine);
-
-export function set(label) {
-	machine.send('CREATED', 0, { label });
-}
-
-export function unset() {
-	machine.send('REMOVED');
-}
+export const toast = fsmStore('notvisible', states);

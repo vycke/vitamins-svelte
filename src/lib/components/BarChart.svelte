@@ -3,8 +3,9 @@
 	import { max } from '$lib/helpers/numbers';
 	import * as Pancake from '@sveltejs/pancake';
 
-	export let data = [];
+	// size = small | medium
 	export let size = 'medium';
+	export let data = [];
 	let className = '';
 	export { className as class };
 	const _max = max(data, 'count');
@@ -13,12 +14,12 @@
 <div class={`chart ${className}`} data-size={size}>
 	{#if data.length > 0}
 		<Pancake.Chart y1={0} y2={_max} x1={data[data.length - 1].day + 0.5} x2={data[0].day - 0.5}>
-			<Pancake.Grid horizontal count={5} let:value>
+			<Pancake.Grid horizontal count={size === 'small' ? 2 : 5} let:value>
 				<div class="grid-line horizontal" />
 				<span class="label y-label">{value}</span>
 			</Pancake.Grid>
 
-			<Pancake.Grid vertical count={10} let:value>
+			<Pancake.Grid vertical count={size === 'small' ? 7 : 15} let:value>
 				<div class="grid-line vertical" />
 				<span class="label x-label">{format(data.find((d) => d.day === value).date)}</span>
 			</Pancake.Grid>
@@ -40,8 +41,9 @@
 	}
 
 	.chart[data-size='small'] {
-		height: 9rem;
-		padding: 2rem;
+		height: 12rem;
+		padding: 1rem;
+		padding-left: 2rem;
 		padding-bottom: 75px;
 	}
 

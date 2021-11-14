@@ -1,6 +1,6 @@
 <script>
 	import { format } from '$lib/helpers/datetime';
-	import { set } from '$lib/stores/toast';
+	import { toast } from '$lib/stores/toast';
 
 	export let item;
 </script>
@@ -38,7 +38,10 @@
 				Email
 			</a>
 		{/if}
-		<button data-type="secondary" class="ml-0" on:click|stopPropagation={() => set('Archived')}
+		<button
+			data-type="secondary"
+			class="ml-0"
+			on:click|stopPropagation={() => toast.dispatch('CREATED', { label: 'Archived' })}
 			>Archive</button
 		>
 	</div>

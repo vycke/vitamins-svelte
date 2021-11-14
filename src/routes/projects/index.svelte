@@ -14,14 +14,17 @@
 </script>
 
 <script>
+	import Alert from '$lib/components/layout/Alert.svelte';
+
 	import BreadCrumb from '$lib/components/layout/BreadCrumb.svelte';
 
 	import Card from '$lib/components/layout/cards/Card.svelte';
+	import EmptyState from '$lib/components/layout/EmptyState.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
 	import Header from '$lib/components/layout/Header.svelte';
 	import Logo from '$lib/components/layout/Logo.svelte';
 	import Modal from '$lib/components/layout/modal/Modal.svelte';
-	import { trigger } from '$lib/stores/modal';
+	import { modal } from '$lib/stores/modal';
 
 	export let projects;
 
@@ -36,20 +39,34 @@
 		<Logo class="mr-0" />
 		<BreadCrumb items={crumbs} class="flex-grow" />
 	</Header>
+</div>
+
+<div class="center center-w-4 flex-grow flow flow-g-0 items-center">
 	<div class="m-1 flex-row items-center">
 		<h1 class="flex-grow">Projects</h1>
-		<button on:click={trigger}>Create project</button>
+		<button on:click={() => modal.dispatch('TOGGLE')}>Create project</button>
+	</div>
+	{#if !projects.length}
+		<EmptyState message="You do not have any projects yet" />
+	{/if}
+
+	<div class="cluster cluster-g-0 cluster-w-00 cluster-stretch items-start">
+		{#each projects as project}
+			<Card
+				title={`ID: ${project.id}`}
+				href={`/projects/${project.id}`}
+				subtitle={project.name}
+				class="maxw-1"
+			>
+				<span class="text-gray-300 italic text-00">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie urna tortor. Etiam
+					mattis at magna sit amet mattis.
+				</span>
+			</Card>
+		{/each}
 	</div>
 </div>
-<div class="cluster cluster-g-0 cluster-w-0 p-2 flex-grow items-start">
-	{#each projects as project}
-		<Card>
-			<a href={`/projects/${project.id}`} class="text-1 no-decoration bold">{project.name}</a>
-			<span class="text-gray-400 italic text-00">Created at: {project.created_at.slice(0, 10)}</span
-			>
-		</Card>
-	{/each}
-</div>
+
 <Footer />
 
 <Modal title="Add project" />

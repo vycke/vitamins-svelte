@@ -1,12 +1,20 @@
+import { fsm } from '@crinkles/fsm';
 import { writable } from 'svelte/store';
 
-export function fsmStore(machine, ctx) {
-	const state = writable(machine.current);
-	const context = writable(ctx);
+export function fsmStore(initial, states) {
+	const machine = fsm(initial, states);
+	const { subscribe, update } = writable({ state: machine.current, context: machine.context });
+
 	machine.listen((_s, target) => {
-		state.update(() => target);
-		context.update(() => machine.context);
+		update(() => ({
+			state: target,
+			context: machine.context
+		}));
 	});
 
-	return { state, context };
+	function dispatch(event, context) {
+		machine.send(event, 0, context);
+	}
+
+	return { subscribe, dispatch };
 }

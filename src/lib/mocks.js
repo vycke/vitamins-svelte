@@ -9,6 +9,11 @@ export const projects = [
 		id: '2',
 		name: 'Test project 2',
 		created_at: '2021-11-01T00:00:00.000Z'
+	},
+	{
+		id: '3',
+		name: 'Test project 3',
+		created_at: '2021-11-01T00:00:00.000Z'
 	}
 ];
 

@@ -2,8 +2,13 @@
 	import { loadHelper } from '$lib/helpers/load';
 	export async function load({ stuff, fetch }) {
 		const project = await stuff.project;
-		const result = await loadHelper(fetch, `/api/errors.json`, ['errors', 'errorsPerDay']);
-		return { props: { project, ...result.props } };
+		const errors = await loadHelper(fetch, `/api/errors.json`, ['errorsPerDay']);
+		const tickets = await loadHelper(fetch, `/api/tickets.json`, 'tickets');
+		const sessions = await loadHelper(fetch, `/api/sessions.json`, [
+			'sessionsPerDay',
+			'topVisitedPages'
+		]);
+		return { props: { project, ...errors.props, ...tickets.props, ...sessions.props } };
 	}
 </script>
 
@@ -15,32 +20,51 @@
 	import ComputerIcon from '$lib/components/icons/ComputerIcon.svelte';
 	import TicketIcon from '$lib/components/icons/TicketIcon.svelte';
 	import ViewIcon from '$lib/components/icons/ViewIcon.svelte';
-	import Spinner from '$lib/components/layout/Spinner.svelte';
+	import { sum } from '$lib/helpers/numbers';
+
 	export let project = {};
-	export let errorsPerDay = [];
+	export let errorsPerDay = [],
+		tickets = [],
+		sessionsPerDay = [],
+		topVisitedPages = [];
 </script>
 
-<h1 class="mb-2">{project?.name}</h1>
-<div class="tiles tiles-w-1 tiles-g-2">
-	<Card title="Open tickets" subtitle="0">
-		<CardIcon slot="icon">
-			<TicketIcon class="icon-2" />
-		</CardIcon>
-	</Card>
-	<Card title="Errors last 30 days" subtitle="0">
+<div class="center center-w-4">
+	<h1 class="mb-2">{project?.name}</h1>
+	<Card
+		title="Errors last 30 days"
+		subtitle={sum(errorsPerDay, 'count')}
+		href={`/projects/${project.id}/errors`}
+	>
 		<CardIcon slot="icon">
 			<BugIcon class="icon-2" />
 		</CardIcon>
-		<BarChart data={errorsPerDay} size="small" />
+		<BarChart data={errorsPerDay} />
 	</Card>
-	<Card title="Sessions last 30 days" subtitle="0">
-		<CardIcon slot="icon">
-			<ComputerIcon class="icon-2" />
-		</CardIcon>
-	</Card>
-	<Card title="Visits last 30 days" subtitle="0">
-		<CardIcon slot="icon">
-			<ViewIcon class="icon-2" />
-		</CardIcon>
-	</Card>
+	<div class="tiles tiles-w-00 tiles-g-2 mt-2">
+		<Card title="Open tickets" subtitle={tickets.length} href={`/projects/${project.id}/tickets`}>
+			<CardIcon slot="icon">
+				<TicketIcon class="icon-2" />
+			</CardIcon>
+		</Card>
+
+		<Card
+			title="Sessions last 30 days"
+			subtitle={sum(sessionsPerDay, 'count')}
+			href={`/projects/${project.id}/sessions`}
+		>
+			<CardIcon slot="icon">
+				<ComputerIcon class="icon-2" />
+			</CardIcon>
+		</Card>
+		<Card
+			title="Visits last 30 days"
+			subtitle={sum(topVisitedPages, 'count')}
+			href={`/projects/${project.id}/sessions`}
+		>
+			<CardIcon slot="icon">
+				<ViewIcon class="icon-2" />
+			</CardIcon>
+		</Card>
+	</div>
 </div>
