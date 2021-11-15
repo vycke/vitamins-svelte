@@ -3,6 +3,7 @@
 	const dispatch = createEventDispatcher();
 
 	export let selected;
+	export let amount = 0;
 	export let item = {};
 
 	function filter() {
@@ -18,5 +19,5 @@
 	class:bg-gray-500={selected === item.type}
 >
 	<span class="flex-grow">{item.label}</span>
-	<span>0</span>
+	<span>{amount}</span>
 </div>

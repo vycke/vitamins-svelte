@@ -1,7 +1,24 @@
 <script context="module">
-	import { loadHelper } from '$lib/helpers/load';
-	export async function load({ fetch }) {
-		return await loadHelper(fetch, `/api/errors.json`, ['errors', 'errorsPerDay']);
+	import { apiError } from '$lib/helpers/api';
+	import { DEFAULT_DAYS, DEFAULT_SIZE } from '$lib/constants';
+
+	export async function load({ fetch, stuff }) {
+		const { project } = stuff;
+		const grouped = await fetch(`/api/projects/${project.id}/errors/grouped?days=${DEFAULT_DAYS}`);
+		const stats = await fetch(`/api/projects/${project.id}/errors/stats`);
+		const errors = await fetch(`/api/projects/${project.id}/errors?size=${DEFAULT_SIZE}`);
+
+		if (grouped.ok && stats.ok && errors.ok) {
+			return {
+				props: {
+					grouped: await grouped.json(),
+					errors: await errors.json(),
+					stats: await stats.json()
+				}
+			};
+		}
+
+		return apiError(grouped, errors, stats);
 	}
 </script>
 
@@ -13,7 +30,6 @@
 	import ExpandedItem from '$lib/components/errors/ExpandedItem.svelte';
 	import { sum } from '$lib/helpers/numbers';
 	import FilterItem from '$lib/components/layout/FilterItem.svelte';
-	import delay from '$lib/helpers/delay';
 
 	const filters = [
 		{ label: 'All', type: 'all', class: '' },
@@ -21,18 +37,16 @@
 		{ label: 'Other', type: 'other', class: 'text-gray-300' }
 	];
 
-	export let errors, errorsPerDay;
+	export let errors, grouped, stats;
+
 	let selected;
-	let show = 5;
 	let filter = 'all';
 
-	$: totalErrors = sum(errorsPerDay, 'count');
-	$: showItems = errors
-		.filter((e) => {
-			if (filter === 'all') return true;
-			return e.status === filter;
-		})
-		.slice(0, show);
+	$: totalErrors = sum(grouped, 'count');
+	$: showItems = errors.filter((e) => {
+		if (filter === 'all') return true;
+		return e.status === filter;
+	});
 
 	function updateFilter(event) {
 		filter = event.detail.type;
@@ -41,20 +55,22 @@
 
 <div class="flow flow-g-00 items-center | mt-0 px-0">
 	<Card class="maxw-4 mb-2" title="Errors last 30 days" subtitle={totalErrors}>
-		<BarChart data={errorsPerDay || []} />
+		<BarChart data={grouped || []} />
 	</Card>
 
 	<div class="flex-row justify-center w-full">
-		<div role="list" class="maxw-00 p-0 pt-3 mt-3">
+		<div role="list" class="maxw-00 p-0 flex-col flex-g-000">
 			<span class="text-gray-300 bold text-00 uppercase px-000">Filters</span>
 			{#each filters as item}
-				<FilterItem on:filter={updateFilter} {item} selected={filter} />
+				<FilterItem on:filter={updateFilter} {item} selected={filter} amount={stats[item.type]} />
 			{/each}
 		</div>
-		<div class="px-0 maxw-3 | flow flow-g-00 | mt-0">
-			<h2 class="text-1 uppercase mb-0 ml-0">Recent errors</h2>
+		<div class="px-0 maxw-3 | flow flow-g-00 ">
 			{#each showItems as error}
-				<ListItem on:click={() => (selected = error.id)} selected={error.id === selected}>
+				<ListItem
+					on:click={(event) => (event.detail ? (selected = error.id) : (selected = null))}
+					selected={error.id === selected}
+				>
 					<CollapsedItem slot="not-selected" item={error} />
 					<ExpandedItem slot="selected" item={error} />
 				</ListItem>

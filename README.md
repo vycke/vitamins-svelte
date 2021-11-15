@@ -10,6 +10,8 @@ Vitamins is a SaaS solution focused on DevOps for SPA and SSR front-end applicat
 
 ## API architecture
 
+![](./images/api-architecture.png)
+
 ## Database model
 
 ![](./images/data-model.png)
