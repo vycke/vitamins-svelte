@@ -21,6 +21,7 @@
 	.spinner {
 		height: 2rem;
 		width: 2rem;
+		z-index: 900;
 		color: var(--color-bace);
 		animation: rotate 1.5s infinite;
 	}

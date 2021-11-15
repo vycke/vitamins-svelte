@@ -1,13 +1,15 @@
 <script context="module">
 	import { sequential } from '$lib/helpers/api';
-	import { DEFAULT_DAYS } from '$lib/constants';
+	import { dayTabs, DEFAULT_DAYS } from '$lib/constants';
 
 	export async function load({ fetch, stuff }) {
 		const { project } = stuff;
-		return await sequential({
+		const result = await sequential({
 			sessions: fetch(`/api/projects/${project.id}/sessions/grouped?days=${DEFAULT_DAYS}`),
 			visits: fetch(`/api/projects/${project.id}/visits/stats?days=${DEFAULT_DAYS}`)
 		});
+
+		return { props: { project, ...result.props } };
 	}
 </script>
 
@@ -15,25 +17,42 @@
 	import BarChart from '$lib/components/BarChart.svelte';
 	import Card from '$lib/components/layout/cards/Card.svelte';
 	import { sum } from '$lib/helpers/numbers';
+	import Tabbar from '$lib/components/layout/Tabbar.svelte';
+	import Spinner from '$lib/components/layout/Spinner.svelte';
 
-	export let sessions, visits;
+	export let sessions, visits, project, loading;
+	let days = DEFAULT_DAYS;
 
-	$: totalPages = sum(visits, 'count');
-	$: totalSessions = sum(sessions, 'count');
+	async function refetch() {
+		const sResult = await fetch(`/api/projects/${project.id}/sessions/grouped?days=${days}`);
+
+		sessions = await sResult.json();
+		const vResult = await fetch(`/api/projects/${project.id}/visits/stats?days=${days}`);
+		visits = await vResult.json();
+	}
+
+	function onSelect(event) {
+		days = event.detail.value;
+		loading = refetch();
+	}
 </script>
 
+{#await loading}
+	<Spinner class="self-center my-2" />
+{/await}
 <div class="center center-w-3 center-g-0 | flow flow-g-00 | mt-0">
 	<Card
 		class="center-exception maxw-4 mb-2"
 		hover={false}
 		title="Sessions last 30 days"
-		subtitle={totalSessions}
+		subtitle={sum(sessions, 'count')}
 	>
 		<BarChart data={sessions || []} />
+		<Tabbar slot="top-right" items={dayTabs} selected={days} on:select={onSelect} />
 	</Card>
 
 	<h2 class="text-1 uppercase">Top 20 visited pages of the last 30 days</h2>
-	<span class="text-gray-300 uppercase mb-0">Total: {totalPages}</span>
+	<span class="text-gray-300 uppercase mb-0">Total: {sum(visits, 'count')}</span>
 	<ol>
 		{#each visits as page}
 			<li>

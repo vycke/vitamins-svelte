@@ -12,7 +12,7 @@
 >
 	<div class="flex-row items-start">
 		<slot name="icon" />
-		<div class="flex-col">
+		<div class="flex-col flex-grow">
 			<h2 class="uppercase text-0 text-gray-300">
 				{#if href.length}
 					<a {href} class="no-decoration">{title}</a>
@@ -24,6 +24,7 @@
 			</h2>
 			<span class="bold mb-0 text-3">{subtitle}</span>
 		</div>
+		<slot name="top-right" />
 	</div>
 	<slot />
 </div>

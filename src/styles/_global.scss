@@ -6,6 +6,7 @@ a[data-type='button'] {
 	transition: var(--transition-200);
 	font-size: var(--size-0);
 	text-decoration: none;
+	color: var(--color-gray-100);
 	line-height: var(--lh-00);
 	white-space: nowrap;
 }
@@ -16,11 +17,11 @@ a[data-type='button']:hover {
 }
 
 button[data-type='secondary'] {
-	background-color: var(--color-gray-300);
+	background-color: var(--color-gray-400);
 }
 
 button[data-type='secondary']:hover {
-	background-color: var(--color-gray-400);
+	background-color: var(--color-gray-300);
 }
 
 button[data-type='link'] {

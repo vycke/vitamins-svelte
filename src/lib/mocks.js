@@ -28,8 +28,8 @@ export const user = {
 export function sessions() {
 	const sessions = [];
 
-	for (let i = 0; i < 100; i++) {
-		const days = Math.round(Math.random() * 30);
+	for (let i = 0; i < 1500; i++) {
+		const days = Math.round(Math.random() * 200);
 		const date = new Date();
 		date.setDate(date.getDate() - days);
 		sessions.push({
@@ -52,7 +52,7 @@ const pages = [
 export function visits(sessions) {
 	const visits = [];
 
-	for (let i = 0; i < 1000; i++) {
+	for (let i = 0; i < 5000; i++) {
 		const sessionId = Math.round(Math.random() * sessions.length - 1);
 		const page = Math.round(Math.random() * (pages.length - 1));
 
@@ -66,18 +66,19 @@ export function visits(sessions) {
 }
 
 // ERRORS & EVENTS
+const status = ['open', 'archived'];
 export function errors() {
 	const items = [];
 
-	for (let i = 0; i < 100; i++) {
-		const days = Math.round(Math.random() * 60);
+	for (let i = 0; i < 1500; i++) {
+		const days = Math.round(Math.random() * 200);
 		const date = new Date();
+		const s = Math.round(Math.random() * 2);
 		date.setDate(date.getDate() - days);
 		const path = Math.round(Math.random() * (pages.length - 1));
 		items.push({
 			id: `${i}`,
-			status: 'open',
-
+			status: status[s <= 1 ? 0 : 1],
 			error: {
 				message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 				name: 'TypeError',
@@ -102,7 +103,7 @@ const types = ['idea', 'bug', 'other'];
 export function tickets() {
 	const items = [];
 
-	for (let i = 0; i < 100; i++) {
+	for (let i = 0; i < 500; i++) {
 		const days = Math.round(Math.random() * 200);
 		const date = new Date();
 		date.setDate(date.getDate() - days);
@@ -122,5 +123,22 @@ export function tickets() {
 		});
 	}
 
+	return items;
+}
+
+const tags = ['nav', 'request', 'response', 'state'];
+export function events() {
+	const items = [];
+	for (let i = 0; i < 10; i++) {
+		const min = Math.round(Math.random() * 180);
+		const date = new Date();
+		date.setDate(date.getDate() - min);
+		items.push({
+			tag: tags[Math.round(Math.random() * 3)],
+			timestamp: date.toISOString(),
+			message:
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie urna tortor. Etiam mattis at magna sit amet mattis.'
+		});
+	}
 	return items;
 }

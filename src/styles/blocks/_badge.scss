@@ -10,7 +10,7 @@
 }
 
 .badge[data-type='other'],
-.badge[data-status='closed'] {
+.badge[data-status='archived'] {
 	background-color: var(--color-gray-300);
 	color: var(--color-gray-500);
 }

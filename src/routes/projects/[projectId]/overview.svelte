@@ -25,11 +25,7 @@
 	import ViewIcon from '$lib/components/icons/ViewIcon.svelte';
 	import { sum } from '$lib/helpers/numbers';
 
-	export let project = {};
-	export let errors = [],
-		tickets = {},
-		sessions = [],
-		visits = [];
+	export let project, errors, tickets, sessions, visits;
 </script>
 
 <div class="center center-w-4">
