@@ -1,30 +1,17 @@
 <script context="module">
 	import { DEFAULT_DAYS } from '$lib/constants';
-	import { apiError } from '$lib/helpers/api';
+	import { sequential } from '$lib/helpers/api';
 
 	export async function load({ stuff, fetch }) {
 		const { project } = await stuff;
+		const result = await sequential({
+			sessions: fetch(`/api/projects/${project.id}/sessions/grouped?days=${DEFAULT_DAYS}`),
+			visits: fetch(`/api/projects/${project.id}/visits/stats?days=${DEFAULT_DAYS}`),
+			tickets: fetch(`/api/projects/${project.id}/tickets/stats`),
+			errors: fetch(`/api/projects/${project.id}/errors/grouped?days=${DEFAULT_DAYS}`)
+		});
 
-		const sessions = await fetch(
-			`/api/projects/${project.id}/sessions/grouped?days=${DEFAULT_DAYS}`
-		);
-		const visits = await fetch(`/api/projects/${project.id}/visits/stats?days=${DEFAULT_DAYS}`);
-		const tickets = await fetch(`/api/projects/${project.id}/tickets/stats`);
-		const errors = await fetch(`/api/projects/${project.id}/errors/grouped?days=${DEFAULT_DAYS}`);
-
-		if (errors.ok && visits.ok && sessions.ok && tickets.ok) {
-			return {
-				props: {
-					project,
-					errors: await errors.json(),
-					tickets: await tickets.json(),
-					sessions: await sessions.json(),
-					visits: await visits.json()
-				}
-			};
-		}
-
-		return apiError(errors, tickets, sessions, visits);
+		return { props: { project, ...result.props } };
 	}
 </script>
 
