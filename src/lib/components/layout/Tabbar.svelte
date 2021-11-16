@@ -10,12 +10,12 @@
 	export let selected;
 </script>
 
-<ul role="list" class="flex-row bg-gray-400 radius-00 p-000">
+<ul role="list" class="flex-row | p-000 | bg-gray-400 radius-00">
 	{#each items as item}
 		<li
 			class:bg-bace={selected === item.value}
 			on:click={() => select(item.value)}
-			class="text-00 px-00 py-000 lh-000 hover:bg-gray-500"
+			class="px-00 py-000 | text-00 lh-000 hover:bg-gray-500"
 		>
 			{item.label}
 		</li>

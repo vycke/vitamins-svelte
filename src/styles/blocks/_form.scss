@@ -1,0 +1,13 @@
+input {
+	padding: var(--size-00) var(--size-00);
+	border-radius: var(--size-00);
+	font-size: var(--size-0);
+	background-color: var(--color-gray-400);
+	border: 1px solid var(--color-gray-300);
+}
+
+label {
+	color: var(--color-gray-300);
+	font-size: var(--size-00);
+	text-transform: uppercase;
+}

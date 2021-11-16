@@ -9,6 +9,7 @@
 			visits: fetch(`/api/projects/${project.id}/visits/stats?days=${DEFAULT_DAYS}`)
 		});
 
+		if (result.error) return result;
 		return { props: { project, ...result.props } };
 	}
 </script>
@@ -40,7 +41,7 @@
 </script>
 
 {#await loading}
-	<Spinner class="self-center my-2" />
+	<Spinner class="self-center | my-2" />
 {/await}
 <div class="center center-w-3 center-g-0 | flow flow-g-00 | mt-0">
 	<Card
@@ -54,12 +55,12 @@
 	</Card>
 
 	<h2 class="text-1 uppercase">Top 20 visited pages of the last 30 days</h2>
-	<span class="text-gray-300 uppercase mb-0">Total: {sum(visits, 'count')}</span>
+	<span class="mb-0 | text-gray-300 uppercase">Total: {sum(visits, 'count')}</span>
 	<ol>
 		{#each visits as page}
 			<li>
-				<div class="flex-row items-center px-0">
-					<span class="flex-grow break-word">{page.path}</span>
+				<div class="flex-row items-center | px-0">
+					<span class="flex-grow | break-word">{page.path}</span>
 					<span class="bold">{page.count}</span>
 				</div>
 			</li>

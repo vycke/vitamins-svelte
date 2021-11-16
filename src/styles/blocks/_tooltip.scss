@@ -5,18 +5,18 @@
 [data-tooltip]:hover::before {
 	content: attr(data-tooltip);
 	position: absolute;
-	line-height: 1.3;
+	line-height: var(--lh-00);
 
 	border-radius: var(--size-0);
 	padding: var(--size-000);
-	background-color: var(--color-gray-300);
-	color: var(--color-gray-100);
+	background-color: var(--color-gray-200);
+	color: var(--color-gray-600);
 	font-weight: bold;
 
 	bottom: 115%;
 	left: 50%;
 	min-width: 3rem;
-	max-width: 200px;
+	max-width: var(--break-00);
 	transform: translate(-50%, 0);
 
 	text-align: center;
@@ -32,19 +32,5 @@
 	transform: translate(-50%, 0);
 	border-width: 5px;
 	border-style: solid;
-	border-color: var(--color-gray-300) transparent transparent transparent;
-}
-
-[data-tooltip-position='left']:hover::before {
-	left: calc(100% - 5px);
-	top: 50%;
-	bottom: auto;
-	transform: translate(0, -50%);
-}
-
-[data-tooltip-position='left']:hover::after {
-	top: 50%;
-	left: calc(100% - 15px);
-	transform: translate(0, -50%);
-	border-color: transparent var(--color-gray-300) transparent transparent;
+	border-color: var(--color-gray-200) transparent transparent transparent;
 }

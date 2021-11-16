@@ -1,15 +1,12 @@
 <script context="module">
 	export async function load({ page, fetch }) {
-		const res = await fetch(`/api/projects/${page.params.projectId}`);
-		if (res.ok) {
-			const project = await res.json();
-			return { props: { project }, stuff: { project } };
-		}
+		const result = await combineCalls({
+			project: fetch(`/api/projects/${page.params.projectId}`)
+		});
 
-		return {
-			status: res.status,
-			error: new Error('Something went wrong')
-		};
+		if (result.error) return result;
+		const { project } = result.props;
+		return { ...result, stuff: { project } };
 	}
 </script>
 
@@ -21,6 +18,7 @@
 	import Header from '$lib/components/layout/Header.svelte';
 	import Logo from '$lib/components/layout/Logo.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
+	import { combineCalls } from '$lib/helpers/api';
 
 	export let project = {};
 
@@ -33,16 +31,16 @@
 </script>
 
 <div class="flex-row">
-	<nav class="flex-col p-00 sticky self-start post-0">
+	<nav class="sticky post-0 | flex-col self-start | p-00">
 		<Logo class="mb-1" />
 		<Navigation items={navItems} />
 	</nav>
-	<div class="flex-col flex-grow mh-full border-l-gray-500">
+	<div class="flex-col flex-grow mh-full | border-l-gray-500">
 		<Header>
 			<BreadCrumb items={breadItems} class="flex-grow" />
 		</Header>
 
-		<main class="flex-grow flex-col p-00"><slot {project} /></main>
+		<main class="flex-grow flex-col | p-00"><slot {project} /></main>
 		<Footer />
 	</div>
 </div>

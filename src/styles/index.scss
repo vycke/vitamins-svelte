@@ -1,30 +1,14 @@
 @import 'feo-config';
 @import '../../node_modules/@crinkles/feo/feo.scss';
+
+// global styles
 @import 'global';
 
+// utilities
+@import 'utils';
+
+// blocks
 @import 'blocks/badge';
+@import 'blocks/button';
 @import 'blocks/tooltip';
 @import 'blocks/icons';
-
-// utilities
-.scale {
-	transition: all 200ms ease;
-}
-
-.scale:hover {
-	box-shadow: 0 0 0 var(--size-000) var(--color-gray-500);
-}
-
-.mh-full {
-	min-height: 100vh;
-}
-
-.ellipsis {
-	overflow-x: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-}
-
-.break-word {
-	overflow-wrap: break-word;
-}

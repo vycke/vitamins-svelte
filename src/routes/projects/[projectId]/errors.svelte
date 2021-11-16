@@ -11,6 +11,7 @@
 			errors: fetch(`/api/projects/${project.id}/errors?size=${DEFAULT_SIZE}&status=open`)
 		});
 
+		if (result.error) return result;
 		return { props: { project, ...result.props } };
 	}
 </script>
@@ -73,21 +74,21 @@
 </script>
 
 <div class="flow flow-g-00 items-center | mt-0 mb-2 px-0">
-	<Card class="maxw-4 mb-2" title="Errors last 30 days" subtitle={sum(grouped, 'count')}>
+	<Card class="maxw-4 | mb-2" title="Errors last 30 days" subtitle={sum(grouped, 'count')}>
 		<BarChart data={grouped || []} />
 		<Tabbar slot="top-right" items={dayTabs} selected={days} on:select={onSelect} />
 	</Card>
 
-	<div class="flex-row flex-g-1 justify-center w-full">
-		<div role="list" class="maxw-00 p-0 flex-col flex-g-000">
-			<span class="text-gray-300 bold text-00 uppercase px-000">Filters</span>
+	<div class="w-full | flex-row flex-g-1 justify-center">
+		<div role="list" class="maxw-00 | flex-col flex-g-000 | p-0">
+			<span class="px-000 | text-gray-300 bold text-00 uppercase">Filters</span>
 			{#each errorFilters as item}
 				<FilterItem on:filter={onFilter} {item} selected={filter} amount={stats[item.type]} />
 			{/each}
 		</div>
 		<div class="maxw-3 | flow flow-g-00 ">
 			{#await loading}
-				<Spinner class="self-center my-2" />
+				<Spinner class="self-center | my-2" />
 			{/await}
 			{#each errors as error}
 				<ListItem

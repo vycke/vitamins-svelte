@@ -9,16 +9,16 @@
 
 <div class="flex-col items-start">
 	<div class="flex-row items-center w-full">
-		<span class="badge | lh-000 py-000 px-00 radius-0" data-status={item.status}>
+		<span class="badge | py-000 px-00 | lh-000 radius-0" data-status={item.status}>
 			{item.status}
 		</span>
-		<span class="flex-grow mx-0 monospace">{item.error.name}</span>
-		<span class="text-00 bold text-gray-300 ml-0 text-right">
+		<span class="flex-grow | mx-0 | monospace">{item.error.name}</span>
+		<span class="ml-0 | text-00 bold text-gray-300 text-right">
 			{format(item.timestamp)}
 		</span>
 	</div>
 
-	<div class="tiles tiles-w-00 tiles-g-00 w-full my-1">
+	<div class="tiles tiles-w-00 tiles-g-00 | w-full | my-1">
 		{#each Object.keys(item.metadata) as key}
 			<div class="flex-col">
 				<span class="text-gray-300 text-00 bold uppercase">{key}</span>
@@ -27,10 +27,10 @@
 		{/each}
 	</div>
 
-	<span class="text-gray-300 text-00 bold uppercase mb-00">Stack trace</span>
+	<span class="mb-00 | text-gray-300 text-00 bold uppercase">Stack trace</span>
 
 	<pre
-		class="bg-gray-600 w-full radius-00 mb-0">
+		class="w-full | mb-0 | bg-gray-600 radius-00">
 		<code>
 			{#each stack as line}
 				<span>{line}</span>
@@ -38,12 +38,12 @@
 		</code>
 	</pre>
 
-	<span class="text-gray-300 text-00 bold uppercase mb-00">Bread crumbs</span>
+	<span class="mb-00 | text-gray-300 text-00 bold uppercase">Bread crumbs</span>
 	<div class="grid | mb-1 text-00">
 		{#each events as event}
-			<span class="tag | monospace bg-gray-600 radius-000 self-start">{event.tag}</span>
-			<span class="wrap flex-grow">{event.message}</span>
-			<span class="time | text-gray-300 flex-grow text-right">
+			<span class="tag | self-start | monospace bg-gray-600 radius-000">{event.tag}</span>
+			<span class="flex-grow | wrap">{event.message}</span>
+			<span class="time | flex-grow | text-gray-300 text-right">
 				{format(event.timestamp)}
 				{time(item.timestamp)}
 			</span>

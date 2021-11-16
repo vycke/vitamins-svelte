@@ -1,6 +1,6 @@
 <script context="module">
-	import { DEFAULT_SIZE, ticketFilters } from '$lib/constants';
-	import { combineCalls } from '$lib/helpers/api';
+	import { DEFAULT_SIZE } from '$lib/constants';
+	import { combineCalls, ticketFilters } from '$lib/helpers/api';
 
 	export async function load({ fetch, stuff }) {
 		const { project } = stuff;
@@ -10,6 +10,7 @@
 			tickets: fetch(`/api/projects/${project.id}/tickets?size=${DEFAULT_SIZE}`)
 		});
 
+		if (result.error) return result;
 		return { props: { project, ...result.props } };
 	}
 </script>
@@ -55,19 +56,19 @@
 	$: search, show, invokeRefetch();
 </script>
 
-<div class="flex-row flex-g-1 justify-center mb-2 mt-0">
-	<div class="maxw-00 p-0 flex-col flex-g-000">
-		<span class="text-gray-300 bold text-00 uppercase px-000">Filters</span>
+<div class="flex-row flex-g-1 justify-center | mb-2 mt-0">
+	<div class="maxw-00 flex-col flex-g-000 | p-0">
+		<span class="px-000 | text-gray-300 bold text-00 uppercase">Filters</span>
 		<SearchBar bind:value={search} placeholder="ticket #id" class="mb-0" />
 		{#each ticketFilters as item}
 			<FilterItem on:filter={onFilter} {item} selected={filter} amount={stats[item.type]} />
 		{/each}
 
-		<button on:click={() => modal.dispatch('TOGGLE')} class="mt-2 w-full">Create ticket</button>
+		<button on:click={() => modal.dispatch('TOGGLE')} class="w-full | mt-2">Create ticket</button>
 	</div>
 	<div class="maxw-3 | flow flow-g-00">
 		{#await loading}
-			<Spinner class="self-center my-2" />
+			<Spinner class="self-center | my-2" />
 		{/await}
 		{#each tickets as item}
 			<ListItem

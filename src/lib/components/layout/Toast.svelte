@@ -3,7 +3,7 @@
 </script>
 
 <div
-	class="toast | bold py-000 px-0 lh-00 bg-bace text-gray-100 radius-00"
+	class="toast | py-000 px-0 | bold lh-00 bg-bace text-gray-100 radius-00"
 	data-state={$toast.state}
 >
 	<span>{$toast.context?.label}</span>

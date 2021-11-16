@@ -4,7 +4,7 @@
 	export { className as class };
 </script>
 
-<div class={`flex-col items-center maxw-2 ${className}`}>
+<div class={`flex-col items-center maxw-2 | ${className}`}>
 	<svg
 		width="400"
 		height="300"

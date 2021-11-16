@@ -11,6 +11,7 @@
 			errors: fetch(`/api/projects/${project.id}/errors/grouped?days=${DEFAULT_DAYS}`)
 		});
 
+		if (result.error) return result;
 		return { props: { project, ...result.props } };
 	}
 </script>
@@ -40,7 +41,7 @@
 		</CardIcon>
 		<BarChart data={errors} />
 	</Card>
-	<div class="tiles tiles-w-00 tiles-g-2 mt-2">
+	<div class="tiles tiles-w-00 tiles-g-2 | mt-2">
 		<Card title="Open tickets" subtitle={tickets.all} href={`/projects/${project.id}/tickets`}>
 			<CardIcon slot="icon">
 				<TicketIcon class="icon-1" />

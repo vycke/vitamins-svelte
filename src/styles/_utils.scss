@@ -1,0 +1,26 @@
+// utilities
+.scale {
+	transition: all 200ms ease;
+}
+
+.scale:hover {
+	box-shadow: 0 0 0 var(--size-000) var(--color-gray-500);
+}
+
+.mh-full {
+	min-height: 100vh;
+}
+
+.ellipsis {
+	overflow-x: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.break-word {
+	overflow-wrap: break-word;
+}
+
+.pointer {
+	cursor: pointer;
+}

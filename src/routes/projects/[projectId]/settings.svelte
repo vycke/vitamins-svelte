@@ -15,11 +15,11 @@
 </script>
 
 <div class="center center-w-3 | flow flow-g-0">
-	<h1 class="flex-grow mb-2">Settings for {project.name}</h1>
+	<h1 class="flex-grow | mb-2">Settings for {project.name}</h1>
 	<form class="flow" on:submit|preventDefault={onSubmit}>
 		<label for="name">Project name</label>
 		<input id="name" type="text" bind:value={project.name} placeholder="Enter project name here." />
-		<div class="flex-row flex-g-0 mt-0 self-start">
+		<div class="flex-row flex-g-0 self-start | mt-0">
 			<button type="submit">Update</button>
 			<button
 				type="button"

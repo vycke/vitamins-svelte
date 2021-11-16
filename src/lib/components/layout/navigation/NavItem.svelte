@@ -15,7 +15,7 @@
 <li
 	class:text-bace={selected}
 	class:bg-gray-500={selected}
-	class="mb-000 px-00 py-000 lh-000 radius-000 hover:bg-gray-500 transition-200 click-area flex-row items-center"
+	class="flex-row items-center | mb-000 px-00 py-000 | lh-000 radius-000 hover:bg-gray-500 transition-200 click-area"
 >
 	{#if Icon}
 		<svelte:component this={Icon} class="mr-0 icon-1 text-gray-300" />

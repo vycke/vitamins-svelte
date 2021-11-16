@@ -16,10 +16,10 @@
 	<div class="flex-row items-center flex-g-00">
 		<slot name="icon" />
 		{#if type === 'info'}
-			<InfoIcon class="text-info icon-1" />
+			<InfoIcon class="icon-1 | text-info" />
 		{/if}
 		{#if type === 'warning'}
-			<WarningIcon class="text-error icon-1" />
+			<WarningIcon class="icon-1 | text-error" />
 		{/if}
 		<span
 			class:text-info={type === 'info'}
@@ -29,5 +29,5 @@
 			{title}
 		</span>
 	</div>
-	<span class="text-gray-500 text-00 mt-00">{description}</span>
+	<span class="mt-00 | text-gray-500 text-00">{description}</span>
 </div>

@@ -7,14 +7,15 @@
 
 <div class="flex-col items-start">
 	<div class="flex-row items-center w-full">
-		<span class="badge | lh-000 py-000 px-00 radius-0" data-type={item.type}>{item.type}</span>
-		<span class="ml-00 text-00 bold" data-type={item.type}>ID: #{item.id}</span>
-		<span class="text-00 bold text-gray-300 ml-0 flex-grow text-right">{format(item.date)}</span>
+		<span class="badge | py-000 px-00 | lh-000 radius-0" data-type={item.type}>{item.type}</span>
+		<span class="ml-00 | text-00 bold" data-type={item.type}>ID: #{item.id}</span>
+		<span class="flex-grow | ml-0 | text-00 bold text-gray-300 text-right">{format(item.date)}</span
+		>
 	</div>
 
 	<span class="mt-00">{item.description}</span>
 
-	<div class="tiles tiles-w-00 tiles-g-0 w-full my-1">
+	<div class="tiles tiles-w-00 tiles-g-0 | w-full | my-1">
 		<div class="flex-col">
 			<span class="text-gray-300 text-00 bold uppercase">Version</span>
 			<span class="break-word">{item.version}</span>

@@ -1,23 +1,13 @@
 <script context="module">
-	export async function load({ fetch }) {
-		const res = await fetch(`/api/projects`);
-		if (res.ok) {
-			const projects = await res.json();
-			return { props: { projects } };
-		}
+	import { combineCalls } from '$lib/helpers/api';
 
-		return {
-			status: res.status,
-			error: new Error('Something went wrong')
-		};
+	export async function load({ fetch }) {
+		return await combineCalls({ projects: fetch(`/api/projects`) });
 	}
 </script>
 
 <script>
-	import Alert from '$lib/components/layout/Alert.svelte';
-
 	import BreadCrumb from '$lib/components/layout/BreadCrumb.svelte';
-
 	import Card from '$lib/components/layout/cards/Card.svelte';
 	import EmptyState from '$lib/components/layout/EmptyState.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
@@ -41,8 +31,8 @@
 	</Header>
 </div>
 
-<div class="center center-w-4 flex-grow flow flow-g-0 items-center">
-	<div class="m-1 flex-row items-center">
+<div class="center center-w-4 flex-grow | flow flow-g-0 items-center">
+	<div class="flex-row items-center | m-1">
 		<h1 class="flex-grow">Projects</h1>
 		<button on:click={() => modal.dispatch('TOGGLE')}>Create project</button>
 	</div>
@@ -50,7 +40,7 @@
 		<EmptyState message="You do not have any projects yet" />
 	{/if}
 
-	<div class="cluster cluster-g-0 cluster-w-00 cluster-stretch items-start">
+	<div class="cluster cluster-g-0 cluster-w-00 cluster-stretch | items-start">
 		{#each projects as project}
 			<Card
 				title={`ID: ${project.id}`}

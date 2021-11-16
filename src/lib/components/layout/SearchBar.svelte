@@ -8,8 +8,8 @@
 </script>
 
 <div class={`relative ${className}`}>
-	<input bind:value {placeholder} class="w-full bg-gray-500 border-gray-400 lh-000 px-1" />
-	<div class="icon"><SearchIcon class="icon-1 text-gray-300" /></div>
+	<input bind:value {placeholder} class="w-full | px-1 | bg-gray-500 border-gray-400 lh-000" />
+	<div class="icon"><SearchIcon class="icon-1 | text-gray-300" /></div>
 </div>
 
 <style>

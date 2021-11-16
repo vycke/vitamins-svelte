@@ -1,50 +1,3 @@
-button,
-a[data-type='button'] {
-	padding: var(--size-000) var(--size-00);
-	border-radius: var(--size-00);
-	background-color: var(--color-bace);
-	transition: var(--transition-200);
-	font-size: var(--size-0);
-	text-decoration: none;
-	color: var(--color-gray-100);
-	line-height: var(--lh-00);
-	white-space: nowrap;
-}
-
-button:hover,
-a[data-type='button']:hover {
-	background-color: var(--color-o-bace);
-}
-
-button[data-type='secondary'] {
-	background-color: var(--color-gray-400);
-}
-
-button[data-type='secondary']:hover {
-	background-color: var(--color-gray-300);
-}
-
-button[data-type='link'] {
-	background-color: transparent;
-}
-
-button[data-type='link']:hover {
-	text-decoration: underline;
-}
-
-button[data-type='error'] {
-	background-color: var(--color-error);
-}
-
-button[data-type='error']:hover {
-	background-color: var(--color-u-error);
-}
-
-button[data-type='styleless'] {
-	padding: 0;
-	background-color: transparent;
-}
-
 // Ordered list
 ol:not([role]) {
 	list-style: decimal outside;
@@ -57,18 +10,4 @@ ol:not([role]) {
 		font-size: var(--size-1);
 		font-family: var(--serif);
 	}
-}
-
-input {
-	padding: var(--size-00) var(--size-00);
-	border-radius: var(--size-00);
-	font-size: var(--size-0);
-	background-color: var(--color-gray-400);
-	border: 1px solid var(--color-gray-300);
-}
-
-label {
-	color: var(--color-gray-300);
-	font-size: var(--size-00);
-	text-transform: uppercase;
 }

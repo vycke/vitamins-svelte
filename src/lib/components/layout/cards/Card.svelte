@@ -22,7 +22,7 @@
 					{title}
 				{/if}
 			</h2>
-			<span class="bold mb-0 text-3">{subtitle}</span>
+			<span class="mb-0 | bold text-3">{subtitle}</span>
 		</div>
 		<slot name="top-right" />
 	</div>
