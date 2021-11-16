@@ -1,11 +1,11 @@
 <script context="module">
-	import { sequential } from '$lib/helpers/api';
+	import { combineCalls } from '$lib/helpers/api';
 	import { dayTabs, DEFAULT_DAYS, DEFAULT_SIZE, errorFilters } from '$lib/constants';
 
 	export async function load({ fetch, stuff }) {
 		const { project } = stuff;
 
-		const result = await sequential({
+		const result = await combineCalls({
 			grouped: fetch(`/api/projects/${project.id}/errors/grouped?days=${DEFAULT_DAYS}`),
 			stats: fetch(`/api/projects/${project.id}/errors/stats`),
 			errors: fetch(`/api/projects/${project.id}/errors?size=${DEFAULT_SIZE}&status=open`)

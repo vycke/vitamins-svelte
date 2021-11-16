@@ -7,12 +7,7 @@ const states = {
 			REMOVED: 'notvisible',
 			CREATED: 'visible'
 		},
-		entry: [
-			assign((_c, values) => {
-				return values;
-			}),
-			send('REMOVED', 6000)
-		]
+		entry: [assign((_c, values) => values), send('REMOVED', 6000)]
 	},
 	notvisible: {
 		on: {

@@ -1,4 +1,4 @@
-export function max(arr, key) {
+export function max(arr = [], key) {
 	let max = 0;
 	arr.forEach((a) => {
 		if (a[key] > max) max = a[key];
@@ -7,7 +7,7 @@ export function max(arr, key) {
 	return max;
 }
 
-export function sum(arr, key) {
+export function sum(arr = [], key) {
 	let total = 0;
 	arr.forEach((a) => (total += a[key]));
 	return total;

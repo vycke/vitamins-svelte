@@ -1,11 +1,11 @@
 <script context="module">
 	import { DEFAULT_SIZE, ticketFilters } from '$lib/constants';
-	import { sequential } from '$lib/helpers/api';
+	import { combineCalls } from '$lib/helpers/api';
 
 	export async function load({ fetch, stuff }) {
 		const { project } = stuff;
 
-		const result = await sequential({
+		const result = await combineCalls({
 			stats: fetch(`/api/projects/${project.id}/tickets/stats`),
 			tickets: fetch(`/api/projects/${project.id}/tickets?size=${DEFAULT_SIZE}`)
 		});
