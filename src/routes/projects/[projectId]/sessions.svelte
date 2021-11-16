@@ -19,16 +19,18 @@
 	import { sum } from '$lib/helpers/numbers';
 	import Tabbar from '$lib/components/layout/Tabbar.svelte';
 	import Spinner from '$lib/components/layout/Spinner.svelte';
+	import { concurrent } from '$lib/helpers/async';
 
 	export let sessions, visits, project, loading;
 	let days = DEFAULT_DAYS;
 
 	async function refetch() {
-		const sResult = await fetch(`/api/projects/${project.id}/sessions/grouped?days=${days}`);
-
-		sessions = await sResult.json();
-		const vResult = await fetch(`/api/projects/${project.id}/visits/stats?days=${days}`);
-		visits = await vResult.json();
+		const result = await concurrent({
+			sessions: fetch(`/api/projects/${project.id}/sessions/grouped?days=${days}`),
+			visits: fetch(`/api/projects/${project.id}/visits/stats?days=${days}`)
+		});
+		sessions = await result.sessions.json();
+		visits = await result.visits.json();
 	}
 
 	function onSelect(event) {
