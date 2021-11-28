@@ -43,8 +43,7 @@
 		<button
 			data-type="secondary"
 			class="ml-0"
-			on:click|stopPropagation={() => toast.dispatch('CREATED', { label: 'Archived' })}
-			>Archive</button
+			on:click|stopPropagation={() => toast.send('CREATED', { label: 'Archived' })}>Archive</button
 		>
 	</div>
 </div>

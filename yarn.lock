@@ -28,10 +28,10 @@
   resolved "https://registry.yarnpkg.com/@crinkles/feo/-/feo-2.2.4.tgz#27382cd1c05cfa482f93da3b3fe894dfa4286f16"
   integrity sha512-woeGKYVrNXyIokTwSuWcEOubYHRRnF68c5JQA3HQphMMnkkY7VmxuxF6aMMZZD9CRE3bbSpXasw7FzND9OScRQ==
 
-"@crinkles/fsm@^0.6.1":
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/@crinkles/fsm/-/fsm-0.6.1.tgz#b4d64981aabe6f7905b555e0b152a25e08320332"
-  integrity sha512-jPrnbpDNtxy/161nqej/kOG0f53JrlnObDleW2LalQfxsYhMP+sy9Zr4LKI3w0Rgz+rwZOWaXuC7p1sc3Ckeyw==
+"@crinkles/fsm@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@crinkles/fsm/-/fsm-0.8.0.tgz#80f3ebce2e11b7a80e4831352798a5f8044f0d8c"
+  integrity sha512-V0APcqYq/VSCD9RUtA6OWe7zCVZJuDr7GxzOXj39a4WntDNMN2M+UcRi3vC4em8vcEBvEXkNOx80NqzlBQpGPw==
 
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"

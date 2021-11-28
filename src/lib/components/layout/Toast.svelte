@@ -7,7 +7,7 @@
 	data-state={$toast.state}
 >
 	<span>{$toast.context?.label}</span>
-	<button on:click={() => toast.dispatch('REMOVED')} class="ml-1" data-type="link">x</button>
+	<button on:click={() => toast.send('REMOVED')} class="ml-1" data-type="link">x</button>
 </div>
 
 <style>

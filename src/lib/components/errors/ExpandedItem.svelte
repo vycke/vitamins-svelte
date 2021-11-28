@@ -51,13 +51,13 @@
 	</div>
 
 	<div class="flex-row justify-end items-center w-full">
-		<button on:click|stopPropagation={() => toast.dispatch('CREATED', { label: 'Ticket created' })}>
+		<button on:click|stopPropagation={() => toast.send('CREATED', { label: 'Ticket created' })}>
 			Create ticket
 		</button>
 		<button
 			data-type="secondary"
 			class="ml-0"
-			on:click|stopPropagation={() => toast.dispatch('CREATED', { label: 'Archived' })}
+			on:click|stopPropagation={() => toast.send('CREATED', { label: 'Archived' })}
 		>
 			Archive
 		</button>

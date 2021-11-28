@@ -10,7 +10,7 @@
 	export let project = {};
 
 	function onSubmit() {
-		toast.dispatch('CREATED', { label: 'Updated' });
+		toast.send('CREATED', { label: 'Updated' });
 	}
 </script>
 
@@ -24,7 +24,7 @@
 			<button
 				type="button"
 				data-type="error"
-				on:click|stopPropagation={() => toast.dispatch('CREATED', { label: 'Deleted' })}
+				on:click|stopPropagation={() => toast.send('CREATED', { label: 'Deleted' })}
 			>
 				Delete
 			</button>

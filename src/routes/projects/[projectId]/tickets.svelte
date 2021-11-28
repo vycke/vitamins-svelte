@@ -1,6 +1,6 @@
 <script context="module">
-	import { DEFAULT_SIZE } from '$lib/constants';
-	import { combineCalls, ticketFilters } from '$lib/helpers/api';
+	import { DEFAULT_SIZE, ticketFilters } from '$lib/constants';
+	import { combineCalls } from '$lib/helpers/api';
 
 	export async function load({ fetch, stuff }) {
 		const { project } = stuff;
@@ -64,7 +64,7 @@
 			<FilterItem on:filter={onFilter} {item} selected={filter} amount={stats[item.type]} />
 		{/each}
 
-		<button on:click={() => modal.dispatch('TOGGLE')} class="w-full | mt-2">Create ticket</button>
+		<button on:click={() => modal.send('TOGGLE')} class="w-full | mt-2">Create ticket</button>
 	</div>
 	<div class="maxw-3 | flow flow-g-00">
 		{#await loading}

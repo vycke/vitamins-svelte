@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@crinkles/feo": "^2.2.4",
-    "@crinkles/fsm": "^0.6.1",
+    "@crinkles/fsm": "^0.8.0",
     "@sveltejs/adapter-vercel": "next",
     "@sveltejs/kit": "next",
     "@sveltejs/pancake": "^0.0.18",

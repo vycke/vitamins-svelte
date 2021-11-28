@@ -34,7 +34,7 @@
 <div class="center center-w-4 flex-grow | flow flow-g-0 items-center">
 	<div class="flex-row items-center | m-1">
 		<h1 class="flex-grow">Projects</h1>
-		<button on:click={() => modal.dispatch('TOGGLE')}>Create project</button>
+		<button on:click={() => modal.send('TOGGLE')}>Create project</button>
 	</div>
 	{#if !projects.length}
 		<EmptyState message="You do not have any projects yet" />
