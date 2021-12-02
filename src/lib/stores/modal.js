@@ -1,16 +1,8 @@
 import { fsmStore } from './util';
 
-const states = {
-	visible: {
-		on: {
-			TOGGLE: 'notvisible'
-		}
-	},
-	notvisible: {
-		on: {
-			TOGGLE: 'visible'
-		}
-	}
+const config = {
+	visible: { TOGGLE: 'notvisible' },
+	notvisible: { TOGGLE: 'visible' }
 };
 
-export const modal = fsmStore('notvisible', states);
+export const modal = fsmStore('notvisible', config);

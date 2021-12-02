@@ -1,19 +1,16 @@
 import { send, assign } from '@crinkles/fsm';
 import { fsmStore } from './util';
 
-const states = {
+const config = {
 	visible: {
-		on: {
-			REMOVED: 'notvisible',
-			CREATED: 'visible'
-		},
-		entry: [assign((_s, _c, values) => values), send('REMOVED', 6000)]
+		CLOSED: 'invisible',
+		OPENED: 'visible',
+		_entry: [
+			(_s, ctx, values) => assign({ ...ctx, ...values }),
+			(_s, ctx) => send('CLOSED', ctx, 6000)
+		]
 	},
-	notvisible: {
-		on: {
-			CREATED: 'visible'
-		}
-	}
+	invisible: { OPENED: 'visible' }
 };
 
-export const toast = fsmStore('notvisible', states);
+export const toast = fsmStore('invisible', config);

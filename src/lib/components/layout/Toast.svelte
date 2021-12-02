@@ -7,7 +7,7 @@
 	data-state={$toast.state}
 >
 	<span>{$toast.context?.label}</span>
-	<button on:click={() => toast.send('REMOVED')} class="ml-1" data-type="link">x</button>
+	<button on:click={() => toast.send('CLOSED')} class="ml-1" data-type="link">x</button>
 </div>
 
 <style>
@@ -24,7 +24,7 @@
 		padding: 0;
 	}
 
-	.toast[data-state='notvisible'] {
+	.toast[data-state='invisible'] {
 		transform: translateY(20rem) scale(1);
 	}
 </style>

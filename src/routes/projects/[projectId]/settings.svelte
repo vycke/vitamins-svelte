@@ -24,7 +24,7 @@
 			<button
 				type="button"
 				data-type="error"
-				on:click|stopPropagation={() => toast.send('CREATED', { label: 'Deleted' })}
+				on:click|stopPropagation={() => toast.send('OPENED', { label: 'Deleted' })}
 			>
 				Delete
 			</button>
