@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 /.svelte-kit
+/coverage
 /package
 .vercel_build_output
 .vercel

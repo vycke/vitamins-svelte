@@ -1,0 +1,15 @@
+{
+  "include": ["src"],
+  "compilerOptions": {
+    "target": "es5",
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "removeComments": true
+  }
+}
